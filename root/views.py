@@ -6,10 +6,10 @@ def home_view(request):
     
     if request.method == 'POST':
         form = UserForm(request.POST, request.FILES) 
-
+        
         if form.is_valid(): 
-            form.save() 
-            result = predict()
+            x_ray_img=form['x_ray_img']
+            result = predict(x_ray_img)
             context={'result':result}
             return render(request,'root/result.html',context)
             # return redirect('result') 

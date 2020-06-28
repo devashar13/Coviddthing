@@ -4,9 +4,9 @@ from keras.preprocessing import image
 import numpy as np
 
 class predict:
-    def predict(self):
+    def predict(x_ray_img):
         classifier = load_model('model_adv.h')
-        test_image=image.load_img(r'D:/GAURAV/Projects/covid_19_detector/CovidDataset/Val/Covid/4e43e48d52c9e2d4c6c1fb9bc1544f_jumbo.jpeg', target_size = (224, 224))
+        test_image=image.load_img('x_ray_img', target_size = (224, 224))
         test_image=image.img_to_array(test_image)
         test_image=np.expand_dims(test_image, axis = 0)
         result=classifier.predict(test_image)
