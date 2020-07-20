@@ -2,6 +2,7 @@
 from keras.models import load_model
 from keras.preprocessing import image
 import numpy as np
+<<<<<<< HEAD
 from covid_detect import settings
 
 class Predict:
@@ -10,6 +11,20 @@ class Predict:
         
         classifier = load_model('model_adv.h')
         test_image=image.load_img(r'C:\Users\Deo\Desktop\Django\covid-detection\covid_detect\media\images\\'+str(x_ray_img), target_size = (224, 224))
+=======
+import os
+from PIL import Image
+
+
+
+class Predict:
+    def __init__(self):
+        pass
+
+    def GetResult(self,x_ray_img):
+        classifier = load_model('model_adv.h')
+        test_image=image.load_img(os.path.abspath(x_ray_img),target_size = (224, 224))
+>>>>>>> master
         test_image=image.img_to_array(test_image)
         test_image=np.expand_dims(test_image, axis = 0)
         result=classifier.predict(test_image)
